@@ -1,0 +1,11 @@
+---
+# vars file for ansible-role-hcxdumptool
+
+hcxdumptool_packages:
+  - build-essential
+  - git
+  - libpcap-dev
+  - libpthread-stubs0-dev
+
+hcxdumptool_repo_url: 'https://github.com/ZerBea/hcxdumptool'
+hcxdumptool_repo_version: master

@@ -1,0 +1,13 @@
+---
+galaxy_info:
+  author: Ian Esplin
+  description: hcxdumptool for Kali
+  license: MIT
+  min_ansible_version: 2.5
+  platforms:
+    - name: Kali
+      versions:
+        - rolling
+  galaxy_tags: []
+
+dependencies: []

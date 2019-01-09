@@ -1,0 +1,5 @@
+---
+# defaults file for ansible-role-hcxdumptool
+
+hcxdumptool_local_src_dir: /usr/local/src
+hcxdumptool_src_dir: '{{ hcxdumptool_local_src_dir }}/hcxdumptool'

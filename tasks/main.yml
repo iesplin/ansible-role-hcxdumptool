@@ -1,0 +1,26 @@
+---
+# tasks file for ansible-role-hcxdumptool
+#
+
+- name: Install hcxdumptool dependencies
+  apt:
+    name: '{{ hcxdumptool_packages }}'
+
+- name: Clone hcxdumptool repo
+  git:
+    repo: '{{ hcxdumptool_repo_url }}'
+    dest: '{{ hcxdumptool_src_dir }}'
+    version: '{{ hcxdumptool_repo_version }}'
+  register: clone_hcxdumptool
+
+- name: Make hcxdumptool
+  command: make
+  args:
+    chdir: '{{ hcxdumptool_src_dir }}'
+  when: clone_hcxdumptool is changed
+
+- name: Install hcxdumptool
+  command: make install
+  args:
+    chdir: '{{ hcxdumptool_src_dir }}'
+  when: clone_hcxdumptool is changed
