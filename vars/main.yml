@@ -7,5 +7,5 @@ hcxdumptool_packages:
   - libpcap-dev
   - libpthread-stubs0-dev
 
-hcxdumptool_repo_url: 'https://github.com/ZerBea/hcxdumptool'
+hcxdumptool_repo_url: "https://github.com/ZerBea/hcxdumptool"
 hcxdumptool_repo_version: master

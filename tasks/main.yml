@@ -4,23 +4,25 @@
 
 - name: Install hcxdumptool dependencies
   apt:
-    name: '{{ hcxdumptool_packages }}'
+    name: "{{ hcxdumptool_packages }}"
 
 - name: Clone hcxdumptool repo
   git:
-    repo: '{{ hcxdumptool_repo_url }}'
-    dest: '{{ hcxdumptool_src_dir }}'
-    version: '{{ hcxdumptool_repo_version }}'
+    repo: "{{ hcxdumptool_repo_url }}"
+    dest: "{{ hcxdumptool_src_dir }}"
+    version: "{{ hcxdumptool_repo_version }}"
+    force: true
   register: clone_hcxdumptool
+  changed_when: false
 
-- name: Make hcxdumptool
-  command: make
-  args:
-    chdir: '{{ hcxdumptool_src_dir }}'
-  when: clone_hcxdumptool is changed
+- block:
+    - name: Make hcxdumptool
+      command: make
+      args:
+        chdir: "{{ hcxdumptool_src_dir }}"
 
-- name: Install hcxdumptool
-  command: make install
-  args:
-    chdir: '{{ hcxdumptool_src_dir }}'
-  when: clone_hcxdumptool is changed
+    - name: Install hcxdumptool
+      command: make install
+      args:
+        chdir: "{{ hcxdumptool_src_dir }}"
+  when: "clone_hcxdumptool.before != clone_hcxdumptool.after"
