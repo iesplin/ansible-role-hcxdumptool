@@ -14,9 +14,6 @@
     recursive: false
   register: clone_hcxdumptool
 
-- debug:
-    var: clone_hcxdumptool
-
 - block:
     - name: Make hcxdumptool
       command: make
