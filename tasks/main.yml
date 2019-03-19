@@ -11,9 +11,11 @@
     repo: "{{ hcxdumptool_repo_url }}"
     dest: "{{ hcxdumptool_src_dir }}"
     version: "{{ hcxdumptool_repo_version }}"
-    force: true
+    recursive: false
   register: clone_hcxdumptool
-  changed_when: false
+
+- debug:
+    var: clone_hcxdumptool
 
 - block:
     - name: Make hcxdumptool
