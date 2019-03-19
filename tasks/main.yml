@@ -24,4 +24,4 @@
       command: make install
       args:
         chdir: "{{ hcxdumptool_src_dir }}"
-  when: "clone_hcxdumptool.before != clone_hcxdumptool.after"
+  when: "clone_hcxdumptool is changed"
